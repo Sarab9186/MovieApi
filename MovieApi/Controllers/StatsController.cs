@@ -32,9 +32,9 @@ namespace MovieApi.Controllers
                        && returnMovieStatsModel.Failed
                        && !returnMovieStatsModel.IsException
                        && !string.IsNullOrEmpty(returnMovieStatsModel.NonSuccessMessage))
-                return StatusCode(StatusCodes.Status404NotFound, returnMovieStatsModel.NonSuccessMessage);
+                return StatusCode(StatusCodes.Status500InternalServerError, returnMovieStatsModel.NonSuccessMessage);
             else
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return StatusCode(StatusCodes.Status500InternalServerError, returnMovieStatsModel.Exception);
         }
     }
 }

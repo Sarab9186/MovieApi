@@ -38,7 +38,7 @@ namespace MovieApi.Controllers
                         && !string.IsNullOrEmpty(metaDataModel.NonSuccessMessage))
                 return StatusCode(StatusCodes.Status500InternalServerError, metaDataModel.NonSuccessMessage);
             else
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return StatusCode(StatusCodes.Status500InternalServerError, metaDataModel.Exception);
         }
         [HttpGet]
         [Route("api/movies/{movieId}/[controller]")]
@@ -56,7 +56,7 @@ namespace MovieApi.Controllers
                         && !string.IsNullOrEmpty(returnedMovieMetaDataModel.NonSuccessMessage))
                 return StatusCode(StatusCodes.Status404NotFound, returnedMovieMetaDataModel.NonSuccessMessage);
             else
-              return StatusCode(StatusCodes.Status500InternalServerError);
+              return StatusCode(StatusCodes.Status500InternalServerError, returnedMovieMetaDataModel.Exception);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Movie.Services
                         var groupedStatsList = statsList.GroupBy(x => new { x.MovieId})
                                 .Select(gsl => new {
                                     Count = gsl.Count(),
-                                    AvgWatches = (gsl.Sum(x=>x.AvgWatchDurationS) / gsl.Count()) /1000,
+                                    AvgWatches = gsl.Sum(x=>x.AvgWatchDurationS) / gsl.Count() / 1000,
                                     ID = gsl.Key.MovieId
                                 })
                                 .OrderByDescending(x => x.Count)
